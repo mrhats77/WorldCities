@@ -13,6 +13,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CitiesComponent } from './cities/cities.component';
 import { CountriesComponent } from './countries/countries.component';
 import { CityEditComponent } from './cities/city-edit.component';
+import { CountryEditComponent } from './countries/country-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { CityEditComponent } from './cities/city-edit.component';
     CitiesComponent,
     CountriesComponent,
     CityEditComponent,
+    CountryEditComponent, 
+  
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { CityEditComponent } from './cities/city-edit.component';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     
   ],
   providers: [],

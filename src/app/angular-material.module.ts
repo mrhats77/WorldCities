@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 
+
+
 @NgModule({
   imports: [
     MatButtonModule,
@@ -20,7 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+   
   ],
   exports: [
     MatButtonModule,
@@ -31,7 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatFormFieldModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+   
   ]
 })
 export class AngularMaterialModule { }
