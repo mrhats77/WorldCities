@@ -114,7 +114,7 @@ export class CityEditComponent implements OnInit {
         this.http
           .post<City>(url, city)
           .subscribe(result => {
-            Swal.fire({
+            Swal.fire(}
               title:'CIty with id:' + result.id + ' has been created.',
               position:'top',
               icon:'success',
