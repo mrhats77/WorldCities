@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WorldCitiesAPI.Data;
 using WorldCitiesAPI.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WorldCitiesAPI.Controllers
 {
@@ -64,6 +65,7 @@ namespace WorldCitiesAPI.Controllers
 
         // PUT: api/Cities/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "RegisteredUser")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCity(int id, City city)
         {
@@ -95,6 +97,7 @@ namespace WorldCitiesAPI.Controllers
 
         // POST: api/Cities
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "RegisteredUser")]
         [HttpPost]
         public async Task<ActionResult<City>> PostCity(City city)
         {
@@ -105,6 +108,7 @@ namespace WorldCitiesAPI.Controllers
         }
 
         // DELETE: api/Cities/5
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCity(int id)
         {
