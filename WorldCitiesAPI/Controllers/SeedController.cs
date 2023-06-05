@@ -1,11 +1,10 @@
-﻿using System.Security;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using System.Security;
 using WorldCitiesAPI.Data;
 using WorldCitiesAPI.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
 
 
 namespace WorldCitiesAPI.Controllers
@@ -21,7 +20,7 @@ namespace WorldCitiesAPI.Controllers
         private readonly IWebHostEnvironment _env;
         private readonly IConfiguration _configuration;
 
-       
+
         public SeedController(
             ApplicationDbContext context,
             RoleManager<IdentityRole> roleManager,
@@ -41,7 +40,7 @@ namespace WorldCitiesAPI.Controllers
             // prevents non-development environments from running this method
             if (!_env.IsDevelopment())
                 throw new SecurityException("Not allowed");
-            var path = Path.Combine(
+            var path = System.IO.Path.Combine(
                 _env.ContentRootPath,
                 "Data/Source/worldcities.xlsx");
             using var stream = System.IO.File.OpenRead(path);

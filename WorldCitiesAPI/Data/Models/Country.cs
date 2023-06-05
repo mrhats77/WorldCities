@@ -17,31 +17,54 @@ namespace WorldCitiesAPI.Data.Models
         [Key]
         [Required]
         public int Id { get; set; }
+
         /// <summary>
         /// Country name (in UTF8 format)
         /// </summary>
         public string Name { get; set; } = null!;
-        /// <summary>
-        /// Country code (in ISO 3166-1 ALPHA-2 format)
-        /// </summary>
+
         /// <summary>
         /// Country code (in ISO 3166-1 ALPHA-2 format)
         /// </summary>
         [JsonPropertyName("iso2")]
-        public string ISO2 { get; set; }
+        [GraphQLName("iso2")]
+        public string ISO2 { get; set; } = null!;
+
         /// <summary>
         /// Country code (in ISO 3166-1 ALPHA-3 format)
         /// </summary>
         [JsonPropertyName("iso3")]
-        public string ISO3 { get; set; }
-        #endregion
-        #region Navigation Properties
-        /// <summary>
-        /// A collection of all the cities related to this country.
-        /// </summary>
-        public ICollection<City>? Cities { get; set; } = null!;
+        [GraphQLName("iso3")]
+        public string ISO3 { get; set; } = null!;
         #endregion
 
+        #region Client-side properties
+        /// <summary>
+        /// The number of cities related to this country.
+        /// </summary>
+        [NotMapped]
+        public int TotCities
+        {
+            get
+            {
+                return (Cities != null)
+                    ? Cities.Count
+                    : _TotCities;
+            }
+            set { _TotCities = value; }
+        }
+
+        private int _TotCities = 0;
+        #endregion
+
+
+        #region Navigation Properties
+        /// <summary>
+        /// A list containing all the cities related to this country.
+        /// </summary>
+        [JsonIgnore]
+        public ICollection<City>? Cities { get; set; } = null!;
+        #endregion
 
     }
 
